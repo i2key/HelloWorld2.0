@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hello World 2.0</string>
+    <string name="search">Screen Name</string>
+    <string name="send">Send</string>
+
+    <color name="screenname_color">#ffffff</color>  
+    <color name="text_color">#eeeeee</color>  
+</resources>
