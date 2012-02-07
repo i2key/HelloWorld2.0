@@ -41,7 +41,6 @@ public class TwitterTimelineRequestTask extends
 				Tweet tweet = new Tweet();
 				tweet.setId(status.getId());
 				tweet.setScreenName(status.getUser().getScreenName());
-				tweet.setName(status.getUser().getName());
 				tweet.setImageUrl(status.getUser().getProfileImageURL().toString());
 				tweet.setText(status.getText());
 				tweet.setDate(status.getCreatedAt().toLocaleString());

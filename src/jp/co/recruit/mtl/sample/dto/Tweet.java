@@ -7,7 +7,6 @@ public class Tweet implements Parcelable{
 	private Long id;
 	private String text;
 	private String screenName;
-	private String name;
 	private String imageUrl;
 	private String date;
 	
@@ -29,12 +28,6 @@ public class Tweet implements Parcelable{
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getImageUrl() {
 		return imageUrl;
 	}
@@ -55,7 +48,6 @@ public class Tweet implements Parcelable{
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeLong(id);
 		dest.writeString(text);
-		dest.writeString(name);
 		dest.writeString(screenName);
 		dest.writeString(imageUrl);
 		dest.writeString(date);
@@ -79,7 +71,6 @@ public class Tweet implements Parcelable{
 	public Tweet(Parcel source) {
 		id = source.readLong();
 		text = source.readString();
-		name = source.readString();
 		screenName = source.readString();
 		imageUrl = source.readString();
 		date = source.readString();

@@ -14,6 +14,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+/**
+ * QueryActivityのViewで入力されたScreenNameをもとに検索したタイムラインを表示するためのActivityです。
+ * List表示用にListActivityを継承しています。
+ */
 public class TimeLineActivity extends ListActivity implements AsyncTaskCallback{
 
 	private TweetAdapter adapter;
@@ -42,6 +46,7 @@ public class TimeLineActivity extends ListActivity implements AsyncTaskCallback{
 		Bundle extras = intent.getExtras();
 		String userName = extras.getString("screenName");
 		
+		//非同期にTwitterへアクセスする
 		TwitterTimelineRequestTask task = new TwitterTimelineRequestTask(this);
 		task.execute(userName);
 
@@ -49,6 +54,9 @@ public class TimeLineActivity extends ListActivity implements AsyncTaskCallback{
 		
 	}
 	
+	/**
+	 * ListViewのレコードがクリックされた契機で実行されるメソッド
+	 */
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
@@ -59,8 +67,13 @@ public class TimeLineActivity extends ListActivity implements AsyncTaskCallback{
 		startActivity(intent);
 	}
 
+	/**
+	 * AsyncTask実行後にコールバックさせるためのメソッド
+	 * （implementsしているAsyncTaskCallbackの実装メソッド）
+	 */
 	@Override
 	public void onFinishTask(Object result) {
+		//非同期でTwitterから取得したタイムラインのリストをListView用のAdapterにセットする
 		adapter = new TweetAdapter(getApplicationContext(), R.layout.tweet, (List<Tweet>)result);
 		setListAdapter(adapter);
 	}

@@ -28,7 +28,7 @@ public class TweetDetailActivity extends Activity {
 			task.execute(tweet.getImageUrl());
 		}
 		
-        ((TextView)findViewById(R.id.textView_screenname)).setText(tweet.getName()+"("+tweet.getScreenName()+")");
+        ((TextView)findViewById(R.id.textView_screenname)).setText(tweet.getScreenName());
         ((TextView)findViewById(R.id.textView_date)).setText(tweet.getDate());
     }
    
