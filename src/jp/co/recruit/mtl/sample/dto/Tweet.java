@@ -3,6 +3,9 @@ package jp.co.recruit.mtl.sample.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Twitterで取得したTweet情報を格納しておくデータクラス
+ */
 public class Tweet implements Parcelable{
 	private Long id;
 	private String text;
@@ -44,6 +47,10 @@ public class Tweet implements Parcelable{
 	public int describeContents() {
 		return 0;
 	}
+	
+	/**
+	 * シリアライズ化するためのメソッド
+	 */
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeLong(id);
@@ -52,7 +59,10 @@ public class Tweet implements Parcelable{
 		dest.writeString(imageUrl);
 		dest.writeString(date);
 	}
-	
+
+	/**
+	 * デシリアライズ化するためのクラス
+	 */
 	public static final Parcelable.Creator<Tweet> CREATOR = new Parcelable.Creator<Tweet>() {
 
 		@Override

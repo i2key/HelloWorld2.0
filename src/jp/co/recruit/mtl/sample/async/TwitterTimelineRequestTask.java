@@ -35,6 +35,7 @@ public class TwitterTimelineRequestTask extends
 		}
 		List<Tweet> list = new ArrayList<Tweet>();
 		try {
+			//OAuthは本勉強会の内容と離れるので、単純にPublicなものを取得します。
 			ResponseList<twitter4j.Status> timeline = twitter.getUserTimeline(userName, paging);
 			
 			for(twitter4j.Status status : timeline){
@@ -50,6 +51,7 @@ public class TwitterTimelineRequestTask extends
 		    e.printStackTrace();
 		    if(e.isCausedByNetworkIssue()){
 		    	//ネットワーク接続エラー
+		    	//エラー処理を書いてねー
 		    }else{
 		    	//それ以外の 異常
 		    }
@@ -57,7 +59,7 @@ public class TwitterTimelineRequestTask extends
 		return list;
 	}
 
-	//メインスレッドで走る処理
+	//メインスレッド(GUIスレッド)で走る処理
 	protected void onPostExecute(List<Tweet> result) { 
 		callback.onFinishTask(result);
 	}

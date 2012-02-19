@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class QuerryActivity extends Activity {
@@ -16,7 +17,7 @@ public class QuerryActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         //レイアウトの設定
-        setContentView(R.layout.input_search_condition);
+        setContentView(R.layout.query);
         
         //UIの生成
         Button button = (Button)findViewById(R.id.button1);
@@ -30,10 +31,19 @@ public class QuerryActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			EditText input = (EditText)findViewById(R.id.editText1);
-			//intent QuerryActivityからTimeLineActivityに遷移させる
-			Intent intent = new Intent(QuerryActivity.this,TimeLineActivity.class);
-			intent.putExtra("screenName", input.getText().toString());
+			//テキストボックスを取得
+			EditText screenName = (EditText)findViewById(R.id.editText1);
+			//チェックボックスを取得
+			CheckBox chkbox = (CheckBox)findViewById(R.id.checkBox1);
+
+			//チェックボックスがチェックされていなければSimpleTimeLineActivityに遷移
+			//チェックボックスがチェックされていたらCustomTimeLineActivityに遷移
+			Intent intent = new Intent(QuerryActivity.this,chkbox.isChecked() ? CustomTimeLineActivity.class : SimpleTimeLineActivity.class);
+
+			//引数に入力されたScreenNameを入れます。
+			intent.putExtra("screenName", screenName.getText().toString());
+
+			//遷移開始
 			startActivity(intent);
 		}
     	

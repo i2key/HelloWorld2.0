@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".activity.TimeLineActivity"></activity>
+
+        <activity android:name=".activity.SimpleTimeLineActivity"></activity>
+        <activity android:name=".activity.CustomTimeLineActivity"></activity>
         <activity android:name=".activity.TweetDetailActivity"></activity>
     </application>
 
